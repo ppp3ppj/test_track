@@ -21,6 +21,7 @@ defmodule TestTrackWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/hi", HiWidgetLive
   end
 
   # Other scopes may use custom stacks.
