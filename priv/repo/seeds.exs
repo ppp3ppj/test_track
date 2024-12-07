@@ -9,3 +9,23 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+#alias TestTrack.Repo
+alias TestTrack.Accounts.User
+
+users = [
+  %{
+    name: "Alice",
+    email: "alice@example.com",
+    password: Bcrypt.hash_pwd_salt("111111111111"),
+  }
+]
+
+# Insert users into the database
+for user_attrs <- users do
+  case TestTrack.Accounts.register_user(user_attrs) do
+    {:ok, user} -> IO.puts("User #{user.email} created")
+    {:error, changeset} -> IO.inspect(changeset.errors, label: "Error creating user")
+  end
+end
+
