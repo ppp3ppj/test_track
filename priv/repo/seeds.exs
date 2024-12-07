@@ -17,7 +17,7 @@ users = [
   %{
     name: "Alice",
     email: "alice@example.com",
-    password: Bcrypt.hash_pwd_salt("111111111111"),
+    password: "111111111111",
   }
 ]
 
